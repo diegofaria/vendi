@@ -1,2 +1,20 @@
-h1 Hello World
-p Today is #{date}.
+doctype html
+html(lang="en")
+    head
+        link(rel="stylesheet" href="/css/material.min.css")
+        script(src="/javascripts/material.min.js")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        
+        title= Vendi
+    body
+        table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp')
+            thead
+                tr
+                    th(class='mdl-data-table__cell--non-numeric') Material
+                    th Quantidade
+                    th Preço unitário
+            tbody
+                tr
+                    td(class='mdl-data-table__cell--non-numeric') Acrílico
+                    td 25
+                    td R$ 2.90
