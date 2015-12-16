@@ -12,9 +12,15 @@ html(lang="en")
     body
         form(id="form-who", action='/who', method='post')
             div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
-                input(name="name", class="mdl-textfield__input", type="text", id="person-name")
-                label(class="mdl-textfield__label", for="sample2") Quem?...
-                span(class="mdl-textfield__error") Input is not a number!
+                div(class="js-who-group")
+                    input(name="who", class="mdl-textfield__input", type="text", id="who")
+                    label(class="mdl-textfield__label", for="who") Quem?...
+                    span(class="mdl-textfield__error") Input is not a number!
+                
+                div(class="js-howMuch-group", style="display:none")
+                    input(name="how-much", class="mdl-textfield__input", type="number", id="how-much")
+                    label(class="mdl-textfield__label", for="how-much") Quanto?...
+                    span(iclass="mdl-textfield__error") Input is not a number!
 
         table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp')
             thead
