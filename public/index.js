@@ -1,4 +1,7 @@
-$("#form-who").submit(function (event) {
-    alert( "Handler for .submit() called." );
-    event.preventDefault();
+$(document).ready(function(){
+    $('#person-name').keydown(function(event){
+      if (event.keyCode == 13)
+        event.preventDefault();
+        console.log("enter");
+    })
 })
