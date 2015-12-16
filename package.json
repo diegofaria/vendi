@@ -16,6 +16,7 @@
     "body-parser": "1.14.1",
     "express": "4.13.3",
     "jade": "1.11.0",
+    "jquery": "2.1.4",
     "material-design-lite": "1.0.6"
   }
 }

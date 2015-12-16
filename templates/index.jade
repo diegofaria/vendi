@@ -4,12 +4,13 @@ html(lang="en")
         link(rel="stylesheet" href="/css/material.min.css")
         script(src="/javascripts/material.min.js")
         link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        script(src="/index.js")
         
         title=Vendi
     body
-        form(action='/who', method='post')
+        form(id="form-who", action='/who', method='post')
             div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
-                input(name="name", class="mdl-textfield__input", type="text", id="sample2")
+                input(name="name", class="mdl-textfield__input", type="text", id="who")
                 label(class="mdl-textfield__label", for="sample2") Quem?...
                 span(class="mdl-textfield__error") Input is not a number!
 
