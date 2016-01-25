@@ -12,7 +12,7 @@ SaveTransactionPresenterSpy.prototype.error = function(){
 
 describe('SaveTransaction', function () {
 
-    it('should save transaction when all fields filled', function () {
+    it('should save transaction when all transactions filled', function () {
         var gateway = new TransactionGateway()
         var presenter = new SaveTransactionPresenterSpy()
         var transaction = {who: "John Doe", howMany: 1, howMuch: 1}
@@ -21,7 +21,11 @@ describe('SaveTransaction', function () {
 
         transactions = gateway.findAll()
         transactions.length.should.be.equal(1)
-        transactions[0].should.be.eql(transaction)
+        savedTransaction = transactions[0]
+        savedTransaction.who.should.be.eql(transaction.who)
+        savedTransaction.howMany.should.be.eql(transaction.howMany)
+        savedTransaction.howMuch.should.be.eql(transaction.howMuch)
+        savedTransaction.createdAt.should.not.be.undefined
         presenter.hasErrors.should.be.false
 
     });
