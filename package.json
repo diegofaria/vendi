@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha $(find . -name '*_test.js')",
+    "autotest": "mocha $(find . -name '*_test.js') --watch"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +15,10 @@
   },
   "dependencies": {
     "body-parser": "1.14.1",
+    "chai": "^3.4.1",
     "express": "4.13.3",
     "jade": "1.11.0",
-    "material-design-lite": "1.0.6"
+    "material-design-lite": "1.0.6",
+    "mocha": "^2.3.4"
   }
 }
