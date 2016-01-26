@@ -1,35 +1,48 @@
 doctype html
 html(lang="en")
     head
-        link(rel="stylesheet" href="/css/material.min.css")
-        script(src="/javascripts/material.min.js")
         link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet" href="/css/libs/mdl/material.min.css")
+        link(rel="stylesheet" href="/css/main.css")
+        script(src="/javascripts/libs/mdl/material.min.js")
         script(src="//code.jquery.com/jquery-1.11.3.min.js")
         script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
         script(src="/index.js")
 
         title=Vendi
     body
-        form(id="form-who", action='/who', method='post')
-            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
-                div(class="js-who-group")
-                    input(name="who", class="mdl-textfield__input", type="text", id="who")
-                    label(class="mdl-textfield__label", for="who") Quem?...
-                    span(class="mdl-textfield__error") Input is not a number!
-                
-                div(class="js-howMuch-group", style="display:none")
-                    input(name="how-much", class="mdl-textfield__input", type="number", id="how-much")
-                    label(class="mdl-textfield__label", for="how-much") Quanto?...
-                    span(iclass="mdl-textfield__error") Input is not a number!
+    div(class="mdl-layout mdl-js-layout")
+        main(class="mdl-layout__content")
+            div(class="mdl-grid")
+                div(class="mdl-cell mdl-cell--3-col")
+                    form(id="form-who", action='/who', method='post')
+                        div(class="")
+                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-who-group")
+                                input(name="who", class="mdl-textfield__input", type="text", id="who")
+                                label(class="mdl-textfield__label", for="who") Who?
+                                span(class="mdl-textfield__error") Input is not a number!
 
-        table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp')
-            thead
-                tr
-                    th(class='mdl-data-table__cell--non-numeric') Quem?
-                    th Quantidade
-                    th Preço unitário
-            tbody
-                tr
-                    td(class='mdl-data-table__cell--non-numeric') #{name}
-                    td 25
-                    td R$ 2.90
+                        div(class="")
+                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMany-group")
+                                input(name="howMany", class="mdl-textfield__input", type="text", id="how-many")
+                                label(class="mdl-textfield__label", for="howMany") How many?
+                                span(class="mdl-textfield__error") Input is not a number!
+                        
+                        div(class="")
+                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMuch-group")
+                                input(name="how-much", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", type="text", id="how-much")
+                                label(class="mdl-textfield__label", for="how-much") How much?
+                                span(class="mdl-textfield__error") Input is not a number!
+
+                div(class="mdl-cell mdl-cell--6-col")
+                    table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width')
+                        thead
+                            tr
+                                th(class='mdl-data-table__cell--non-numeric') Who?
+                                th How many?
+                                th How much?
+                        tbody
+                            tr
+                                td(class='mdl-data-table__cell--non-numeric') John Doe
+                                td 25
+                                td R$ 2.90
