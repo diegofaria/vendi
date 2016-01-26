@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha $(find . -name '*_test.js')",
-    "autotest": "mocha $(find . -name '*_test.js') --watch"
+    "autotest": "mocha $(find . -name '*_test.js') --watch",
+    "build-css": "node-sass --include-path scss scss/main.scss public/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "keywords": [],
   "author": "",
@@ -20,5 +22,9 @@
     "jade": "1.11.0",
     "material-design-lite": "1.0.6",
     "mocha": "^2.3.4"
+  },
+  "devDependencies": {
+    "node-sass": "3.4.2",
+    "nodemon": "1.8.1"
   }
 }
