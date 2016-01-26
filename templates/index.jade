@@ -15,26 +15,26 @@ html(lang="en")
         main(class="mdl-layout__content")
             div(class="mdl-grid")
                 div(class="mdl-cell mdl-cell--3-col")
-                    form(id="form-who", action='/who', method='post')
-                        div(class="")
-                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-who-group")
-                                input(name="who", class="mdl-textfield__input", type="text", id="who")
-                                label(class="mdl-textfield__label", for="who") Who?
-                                span(class="mdl-textfield__error") Input is not a number!
-
-                        div(class="")
-                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMany-group")
-                                input(name="howMany", class="mdl-textfield__input", type="text", id="how-many")
-                                label(class="mdl-textfield__label", for="howMany") How many?
-                                span(class="mdl-textfield__error") Input is not a number!
-                        
-                        div(class="")
-                            div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMuch-group")
-                                input(name="how-much", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", type="text", id="how-much")
-                                label(class="mdl-textfield__label", for="how-much") How much?
-                                span(class="mdl-textfield__error") Input is not a number!
-
                 div(class="mdl-cell mdl-cell--6-col")
+                    form(id="form-who", action='/who', method='post')
+                        div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-who-group full-width")
+                            input(name="who", class="mdl-textfield__input", type="text", id="who")
+                            label(class="mdl-textfield__label", for="who") Who?
+                            span(class="mdl-textfield__error") Input is not a number!
+
+                        div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMany-group full-width")
+                            input(name="howMany", class="mdl-textfield__input", type="text", id="how-many")
+                            label(class="mdl-textfield__label", for="howMany") How many?
+                            span(class="mdl-textfield__error") Input is not a number!
+                    
+                        div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMuch-group full-width")
+                            input(name="how-much", class="mdl-textfield__input", pattern="-?[0-9]*(\.[0-9]+)?", type="text", id="how-much")
+                            label(class="mdl-textfield__label", for="how-much") How much?
+                            span(class="mdl-textfield__error") Input is not a number!
+                    button(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent form-button__align-right") Add
+                div(class="mdl-cell mdl-cell--3-col")
+
+                div(class="mdl-cell mdl-cell--12-col")
                     table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width')
                         thead
                             tr
@@ -45,4 +45,17 @@ html(lang="en")
                             tr
                                 td(class='mdl-data-table__cell--non-numeric') John Doe
                                 td 25
-                                td R$ 2.90
+                                td R$ 40.90
+                            tr
+                                td(class='mdl-data-table__cell--non-numeric') John Doe
+                                td 10
+                                td R$ 20.00
+                            tr
+                                td(class='mdl-data-table__cell--non-numeric') John Doe
+                                td 5
+                                td R$ 10.90
+                            tr
+                                td(class='mdl-data-table__cell--non-numeric') John Doe
+                                td 30
+                                td R$ 45.90
+                                
