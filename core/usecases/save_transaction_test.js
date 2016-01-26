@@ -1,4 +1,4 @@
-var should = require('chai').should();
+var should = require('chai').should()
 var SaveTransaction = require('./save_transaction.js')
 var TransactionGateway = require('../gateways/transaction_gateway.js')
 
@@ -28,7 +28,7 @@ describe('SaveTransaction', function () {
         savedTransaction.createdAt.should.not.be.undefined
         presenter.hasErrors.should.be.false
 
-    });
+    })
 
     it('should not save transaction when a field is missing', function () {
         var gateway = new TransactionGateway()
@@ -40,6 +40,6 @@ describe('SaveTransaction', function () {
         transactions = gateway.findAll()
         transactions.length.should.be.equal(0)
         presenter.hasErrors.should.be.true
-    });
+    })
 
-});
+})
