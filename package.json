@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "body-parser": "1.14.1",
-    "chai": "^3.4.1",
+    "chai": "^3.5.0",
     "express": "4.13.3",
     "jade": "1.11.0",
     "material-design-lite": "1.0.6",
-    "mocha": "^2.3.4",
+    "mocha": "^2.4.5",
     "slackbots": "^0.5.1"
   },
   "devDependencies": {
