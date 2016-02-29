@@ -21,7 +21,8 @@
     "express": "4.13.3",
     "jade": "1.11.0",
     "material-design-lite": "1.0.6",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "slackbots": "^0.5.1"
   },
   "devDependencies": {
     "node-sass": "3.4.2",
