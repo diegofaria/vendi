@@ -1,12 +1,12 @@
 var should = require('chai').should()
 var TransactionGateway = require('../gateways/transaction_gateway.js')
 
-function ListClientsBalances(transactionGateway, presenter){
+function ListCustomersBalances(transactionGateway, presenter){
     this.transactionGateway = transactionGateway
     this.presenter = presenter
 }
 
-ListClientsBalances.prototype.execute = function(){
+ListCustomersBalances.prototype.execute = function(){
     var transactions = this.transactionGateway.findAll()
     var balances_dict = {}
     var balances_list = []
@@ -40,7 +40,7 @@ describe('List Clients Balances', function () {
         var gateway = new TransactionGateway()
         var presenter = new ListClientsPresenterSpy()
 
-        new ListClientsBalances(gateway, presenter).execute()
+        new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(0)
     })
@@ -50,7 +50,7 @@ describe('List Clients Balances', function () {
         gateway.save({who: 'john', howMany: 1, howMuch: 9})
         var presenter = new ListClientsPresenterSpy()
 
-        new ListClientsBalances(gateway, presenter).execute()
+        new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(1)
         presenter.customers[0].amount.should.be.equal(9)
@@ -63,7 +63,7 @@ describe('List Clients Balances', function () {
         gateway.save({who: 'john', howMany: 2, howMuch: 18})
         var presenter = new ListClientsPresenterSpy()
 
-        new ListClientsBalances(gateway, presenter).execute()
+        new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(1)
         presenter.customers[0].amount.should.be.equal(27)
@@ -77,7 +77,7 @@ describe('List Clients Balances', function () {
         gateway.save({who: 'ronan', howMany: 2, howMuch: 1})
         var presenter = new ListClientsPresenterSpy()
 
-        new ListClientsBalances(gateway, presenter).execute()
+        new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(2)
         presenter.customers[0].amount.should.be.equal(9)
