@@ -17,17 +17,26 @@ app.set('views', path.join(__dirname, 'templates'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(request, response) {
-
-    response.render('index', {date: new Date().toDateString()})
+    new ListCustomersBalances(gateway, {
+        list: function(balances){
+            response.render('index', {balances: balances})
+        }
+    }).execute()
 })
 
 app.post('/who', function(request, response) {
+    var transaction = {
+        'who': request.body.who,
+        'howMany': parseInt(request.body.howMany),
+        'howMuch': parseInt(request.body.howMuch),
+    }
+
     var presenter = {
         error: function(){response.send("deu pau")},
-        success: function(){response.send("deu certo")}
+        success: function(){response.redirect('/')}
     }
     var saveTransaction = new SaveTransaction(gateway, presenter)
-    saveTransaction.execute(request.body)
+    saveTransaction.execute(transaction)
 })
 
 

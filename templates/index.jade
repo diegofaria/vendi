@@ -23,7 +23,7 @@ html(lang="en")
                             span(class="mdl-textfield__error") Input is not a number!
 
                         div(class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label js-howMany-group full-width")
-                            input(name="howMany", class="mdl-textfield__input", type="text", id="how-many")
+                            input(name="howMany", class="mdl-textfield__input", type="text", id="howMany")
                             label(class="mdl-textfield__label", for="howMany") How many?
                             span(class="mdl-textfield__error") Input is not a number!
                     
@@ -38,24 +38,10 @@ html(lang="en")
                     table(class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp full-width')
                         thead
                             tr
-                                th(class='mdl-data-table__cell--non-numeric') Who?
-                                th How many?
-                                th How much?
+                                th(class='mdl-data-table__cell--non-numeric') Name
+                                th Amount
                         tbody
-                            tr
-                                td(class='mdl-data-table__cell--non-numeric') John Doe
-                                td 25
-                                td R$ 40.90
-                            tr
-                                td(class='mdl-data-table__cell--non-numeric') John Doe
-                                td 10
-                                td R$ 20.00
-                            tr
-                                td(class='mdl-data-table__cell--non-numeric') John Doe
-                                td 5
-                                td R$ 10.90
-                            tr
-                                td(class='mdl-data-table__cell--non-numeric') John Doe
-                                td 30
-                                td R$ 45.90
-                                
+                            each item in balances
+                                tr
+                                    td(class='mdl-data-table__cell--non-numeric')= item.name
+                                    td= item.amount                                    
