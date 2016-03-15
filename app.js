@@ -31,12 +31,10 @@ app.post('/who', function(request, response) {
         'howMuch': parseInt(request.body.howMuch),
     }
 
-    var presenter = {
+    new SaveTransaction(gateway, {
         error: function(){response.send("deu pau")},
         success: function(){response.redirect('/')}
-    }
-    var saveTransaction = new SaveTransaction(gateway, presenter)
-    saveTransaction.execute(transaction)
+    }).execute(transaction)
 })
 
 
