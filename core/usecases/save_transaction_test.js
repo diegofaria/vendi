@@ -27,7 +27,7 @@ describe('SaveTransaction', function () {
         transactions = gateway.findAll()
         transactions.length.should.be.equal(1)
         savedTransaction = transactions[0]
-        savedTransaction.who.should.be.eql(transaction.who)
+        savedTransaction.who.should.be.eql(transaction.who.toLowerCase())
         savedTransaction.howMany.should.be.eql(transaction.howMany)
         savedTransaction.howMuch.should.be.eql(transaction.howMuch)
         savedTransaction.createdAt.should.not.be.undefined

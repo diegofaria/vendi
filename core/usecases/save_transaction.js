@@ -13,6 +13,7 @@ SaveTransaction.prototype.execute = function(transaction){
     }
 
     transaction.createdAt = new Date()
+    transaction.who = transaction.who.toLowerCase()
     this.transactionGateway.save(transaction)
     this.saveTransactionPresenter.success()
 }
