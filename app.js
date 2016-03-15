@@ -4,6 +4,10 @@ var bodyParser = require('body-parser')
 var port = process.argv[2] || 3000
 var app = express()
 
+var ListCustomersBalances = require('./core/usecases/list_customers_balances')
+var SaveTransaction = require('./core/usecases/save_transaction')
+var TransactionGateway = require('./core/gateways/transaction_gateway')
+var gateway = new TransactionGateway()
 
 app.use(bodyParser.urlencoded({extended: false}))
 
@@ -13,12 +17,17 @@ app.set('views', path.join(__dirname, 'templates'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(request, response) {
+
     response.render('index', {date: new Date().toDateString()})
 })
 
 app.post('/who', function(request, response) {
-    console.log(request.body.name)
-    response.send(request.body.name)
+    var presenter = {
+        error: function(){response.send("deu pau")},
+        success: function(){response.send("deu certo")}
+    }
+    var saveTransaction = new SaveTransaction(gateway, presenter)
+    saveTransaction.execute(request.body)
 })
 
 

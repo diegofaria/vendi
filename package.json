@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha $(find . -name '*_test.js')",
-    "autotest": "mocha $(find . -name '*_test.js') --watch",
+    "test": "mocha $(find core -name '*_test.js')",
+    "autotest": "mocha $(find core -name '*_test.js') --watch",
     "build-css": "node-sass --include-path scss scss/main.scss public/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },

@@ -4,10 +4,15 @@ var TransactionGateway = require('../gateways/transaction_gateway.js')
 
 function SaveTransactionPresenterSpy(){
     this.hasErrors = false
+    this.successSpied = false
 }
 
 SaveTransactionPresenterSpy.prototype.error = function(){
     this.hasErrors = true
+}
+
+SaveTransactionPresenterSpy.prototype.success = function(){
+    this.successSpied = true
 }
 
 describe('SaveTransaction', function () {
@@ -27,7 +32,7 @@ describe('SaveTransaction', function () {
         savedTransaction.howMuch.should.be.eql(transaction.howMuch)
         savedTransaction.createdAt.should.not.be.undefined
         presenter.hasErrors.should.be.false
-
+        presenter.successSpied.should.be.true
     })
 
     it('should not save transaction when a field is missing', function () {
@@ -40,6 +45,7 @@ describe('SaveTransaction', function () {
         transactions = gateway.findAll()
         transactions.length.should.be.equal(0)
         presenter.hasErrors.should.be.true
+        presenter.successSpied.should.be.false
     })
 
 })

@@ -1,44 +1,21 @@
 var should = require('chai').should()
-var TransactionGateway = require('../gateways/transaction_gateway.js')
+var TransactionGateway = require('../gateways/transaction_gateway')
+var ListCustomersBalances = require('./list_customers_balances')
 
-function ListCustomersBalances(transactionGateway, presenter){
-    this.transactionGateway = transactionGateway
-    this.presenter = presenter
-}
 
-ListCustomersBalances.prototype.execute = function(){
-    var transactions = this.transactionGateway.findAll()
-    var balances_dict = {}
-    var balances_list = []
-
-    for(var i = 0; i < transactions.length; i++){
-        transaction = transactions[i]
-        if(balances_dict[transaction.who])
-            balances_dict[transaction.who] += transaction.howMuch
-        else
-            balances_dict[transaction.who] = transaction.howMuch
-    }
-
-    for (item in balances_dict) {
-        balances_list.push({name: item, amount: balances_dict[item]})
-    }
-
-    this.presenter.list(balances_list)
-}
-
-function ListClientsPresenterSpy(){
+function ListCustomersPresenterSpy(){
     this.customers = []
 }
 
-ListClientsPresenterSpy.prototype.list = function(customers){
+ListCustomersPresenterSpy.prototype.list = function(customers){
     this.customers = customers
 }
 
-describe('List Clients Balances', function () {
+describe('List Customers Balances', function () {
 
     it('should not list customer balances when has no transactions', function () {
         var gateway = new TransactionGateway()
-        var presenter = new ListClientsPresenterSpy()
+        var presenter = new ListCustomersPresenterSpy()
 
         new ListCustomersBalances(gateway, presenter).execute()
 
@@ -48,7 +25,7 @@ describe('List Clients Balances', function () {
     it('should list customer balance when has one transaction', function () {
         var gateway = new TransactionGateway()
         gateway.save({who: 'john', howMany: 1, howMuch: 9})
-        var presenter = new ListClientsPresenterSpy()
+        var presenter = new ListCustomersPresenterSpy()
 
         new ListCustomersBalances(gateway, presenter).execute()
 
@@ -61,7 +38,7 @@ describe('List Clients Balances', function () {
         var gateway = new TransactionGateway()
         gateway.save({who: 'john', howMany: 1, howMuch: 9})
         gateway.save({who: 'john', howMany: 2, howMuch: 18})
-        var presenter = new ListClientsPresenterSpy()
+        var presenter = new ListCustomersPresenterSpy()
 
         new ListCustomersBalances(gateway, presenter).execute()
 
@@ -75,7 +52,7 @@ describe('List Clients Balances', function () {
         gateway.save({who: 'john', howMany: 1, howMuch: 9})
         gateway.save({who: 'ronan', howMany: 2, howMuch: 18})
         gateway.save({who: 'ronan', howMany: 2, howMuch: 1})
-        var presenter = new ListClientsPresenterSpy()
+        var presenter = new ListCustomersPresenterSpy()
 
         new ListCustomersBalances(gateway, presenter).execute()
 

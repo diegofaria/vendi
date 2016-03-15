@@ -14,6 +14,7 @@ SaveTransaction.prototype.execute = function(transaction){
 
     transaction.createdAt = new Date()
     this.transactionGateway.save(transaction)
+    this.saveTransactionPresenter.success()
 }
 
 module.exports = SaveTransaction
