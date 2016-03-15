@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 function ListCustomersBalances(transactionGateway, presenter){
     this.transactionGateway = transactionGateway
     this.presenter = presenter
@@ -5,22 +7,20 @@ function ListCustomersBalances(transactionGateway, presenter){
 
 ListCustomersBalances.prototype.execute = function(){
     var transactions = this.transactionGateway.findAll()
-    var balances_dict = {}
-    var balances_list = []
+    var balances = []
 
-    for(var i = 0; i < transactions.length; i++){
-        transaction = transactions[i]
-        if(balances_dict[transaction.who])
-            balances_dict[transaction.who] += transaction.howMuch
-        else
-            balances_dict[transaction.who] = transaction.howMuch
-    }
+    var transactionsByName = _.groupBy(transactions, function(transaction){ return transaction.who; });
+    _.each(transactionsByName, function(customerTransactions){
+        customerBalance = { name: '', howMany:0, amount:0 }
+        _.each(customerTransactions, function(transaction){
+            customerBalance['name'] = transaction.who
+            customerBalance['howMany'] += transaction.howMany
+            customerBalance['amount'] += transaction.howMuch
+        })
+        balances.push(customerBalance)
+    })
 
-    for (item in balances_dict) {
-        balances_list.push({name: item, amount: balances_dict[item]})
-    }
-
-    this.presenter.list(balances_list)
+    this.presenter.list(balances)
 }
 
 
