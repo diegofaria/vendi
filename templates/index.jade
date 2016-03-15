@@ -39,9 +39,11 @@ html(lang="en")
                         thead
                             tr
                                 th(class='mdl-data-table__cell--non-numeric') Name
+                                th How many
                                 th Amount
                         tbody
                             each item in balances
                                 tr
                                     td(class='mdl-data-table__cell--non-numeric')= item.name
+                                    td= item.howMany                                    
                                     td= item.amount                                    
