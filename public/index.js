@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 
 var SaveTransaction = require('../core/usecases/save_transaction')
 var TransactionGateway = require('../core/gateways/transaction_gateway')
+var ListCustomersBalances = require('../core/usecases/list_customers_balances')
 var gateway = new TransactionGateway()
 
 var TransactionRow = React.createClass({
