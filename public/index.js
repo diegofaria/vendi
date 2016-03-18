@@ -14,7 +14,7 @@ var TransactionTable = React.createClass({
     render: function(){
         var transactions = this.props.rows.map(function(transaction){
             return (
-                <TransactionRow transaction={transaction} key={transaction.id}/>
+                <TransactionRow transaction={transaction} key={transaction.createdAt}/>
             )
         })
         return (
