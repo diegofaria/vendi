@@ -26,12 +26,18 @@ app.use(function(req, res, next) {
 app.post('/api/transactions', function(req, res) {
     var newTransaction = {
         who: req.body.who,
-        howMany: parseInt(req.body.howMany),
-        howMuch: parseInt(req.body.howMuch),
+        howMany: req.body.howMany,
+        howMuch: req.body.howMuch,
     };
     new SaveTransaction(gateway, {
         error: function(){response.send("explosion")},
-        success: function(){res.json(gateway.findAll())}
+        success: function(){
+            new ListCustomersBalances(gateway, {
+                list: function(balances){
+                    res.json(balances)
+                }
+            }).execute()
+        }
     }).execute(newTransaction)
 });
 

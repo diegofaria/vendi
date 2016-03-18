@@ -14,6 +14,8 @@ SaveTransaction.prototype.execute = function(transaction){
 
     transaction.createdAt = new Date()
     transaction.who = transaction.who.toLowerCase()
+    transaction.howMany = parseInt(transaction.howMany)
+    transaction.howMuch = parseInt(transaction.howMuch)
     this.transactionGateway.save(transaction)
     this.saveTransactionPresenter.success()
 }
