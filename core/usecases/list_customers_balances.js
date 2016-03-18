@@ -11,11 +11,11 @@ ListCustomersBalances.prototype.execute = function(){
 
     var transactionsByName = _.groupBy(transactions, function(transaction){ return transaction.who; });
     _.each(transactionsByName, function(customerTransactions){
-        customerBalance = { name: '', howMany:0, amount:0 }
+        customerBalance = { name: '', howMany:0, howMuch:0 }
         _.each(customerTransactions, function(transaction){
-            customerBalance['name'] = transaction.who
+            customerBalance['who'] = transaction.who
             customerBalance['howMany'] += transaction.howMany
-            customerBalance['amount'] += transaction.howMuch
+            customerBalance['howMuch'] += transaction.howMuch
         })
         balances.push(customerBalance)
     })

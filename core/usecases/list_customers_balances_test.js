@@ -30,11 +30,11 @@ describe('List Customers Balances', function () {
         new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(1)
-        presenter.customers[0].amount.should.be.equal(9)
-        presenter.customers[0].name.should.be.equal('john')
+        presenter.customers[0].howMuch.should.be.equal(9)
+        presenter.customers[0].who.should.be.equal('john')
     })
 
-    it('should list customer balance with the sum of the transactions amount', function () {
+    it('should list customer balance with the sum of the transactions howMuch', function () {
         var gateway = new TransactionGateway()
         gateway.save({who: 'john', howMany: 1, howMuch: 9})
         gateway.save({who: 'john', howMany: 2, howMuch: 18})
@@ -43,8 +43,8 @@ describe('List Customers Balances', function () {
         new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(1)
-        presenter.customers[0].amount.should.be.equal(27)
-        presenter.customers[0].name.should.be.equal('john')
+        presenter.customers[0].howMuch.should.be.equal(27)
+        presenter.customers[0].who.should.be.equal('john')
     })
 
     it('should list customer balance for each different customer', function () {
@@ -57,10 +57,10 @@ describe('List Customers Balances', function () {
         new ListCustomersBalances(gateway, presenter).execute()
 
         presenter.customers.length.should.be.equal(2)
-        presenter.customers[0].amount.should.be.equal(9)
-        presenter.customers[0].name.should.be.equal('john')
-        presenter.customers[1].amount.should.be.equal(19)
-        presenter.customers[1].name.should.be.equal('ronan')
+        presenter.customers[0].howMuch.should.be.equal(9)
+        presenter.customers[0].who.should.be.equal('john')
+        presenter.customers[1].howMuch.should.be.equal(19)
+        presenter.customers[1].who.should.be.equal('ronan')
     })
 
 
