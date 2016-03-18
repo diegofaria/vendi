@@ -83,6 +83,23 @@ var TransactionBox = React.createClass({
     getInitialState: function(){
         return { data: [] }
     },
+    componentDidMount: function() {
+        this.loadTransactionsFromServer()
+        setInterval(this.loadTransactionsFromServer, this.props.pullInterval)
+    },
+    loadTransactionsFromServer: function() {
+        $.ajax({
+        url: this.props.url,
+        dataType: 'json',
+        cache: false,
+        success: function(data) {
+            this.setState({data: data});
+        }.bind(this),
+        error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+        }.bind(this)
+        });
+    },
     handleTransactionSubmit: function(transaction) {
         $.ajax({
             url: this.props.url,
@@ -108,6 +125,6 @@ var TransactionBox = React.createClass({
 })
 
 ReactDOM.render(
-    <TransactionBox url="/api/transactions"/>,
+    <TransactionBox url="/api/transactions" pullInterval={2000}/>,
     document.getElementById('content')
 );
