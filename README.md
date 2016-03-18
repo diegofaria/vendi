@@ -11,4 +11,4 @@ Sales control for myself.
 
 4.`node app.js`
 
-5. Access localhost:3000
+5.Access localhost:3000
