@@ -1,3 +1,10 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var SaveTransaction = require('../core/usecases/save_transaction')
+var TransactionGateway = require('../core/gateways/transaction_gateway')
+var gateway = new TransactionGateway()
+
 var TransactionRow = React.createClass({
     render: function(){
         return (
@@ -101,6 +108,22 @@ var TransactionBox = React.createClass({
         });
     },
     handleTransactionSubmit: function(transaction) {
+        var transactions = this.state.data
+
+        var newTransactions = []
+        gateway.transactions = this.state.data
+        new SaveTransaction(gateway, {
+            error: function(){ console.log('explosion') },
+            success: function(){
+                new ListCustomersBalances(gateway, {
+                    list: function(balances){
+                        newTransactions = balances
+                    }
+                }).execute()
+            }
+        }).execute(transaction)
+
+        this.setState({data: newTransactions})
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -110,6 +133,7 @@ var TransactionBox = React.createClass({
                 this.setState({data: data});
             }.bind(this),
             error: function(xhr, status, err) {
+                this.setState({data: transactions})
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         })

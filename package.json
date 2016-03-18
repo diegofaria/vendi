@@ -16,17 +16,21 @@
     "node": "5.1.0"
   },
   "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "babel-preset-react": "^6.5.0",
     "body-parser": "1.14.1",
+    "chai": "^3.5.0",
     "express": "4.13.3",
     "jade": "1.11.0",
     "material-design-lite": "1.0.6",
+    "mocha": "^2.4.5",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
     "slackbots": "^0.5.1"
   },
   "devDependencies": {
     "node-sass": "3.4.2",
     "nodemon": "1.8.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "webpack": "^1.12.14"
   }
 }
