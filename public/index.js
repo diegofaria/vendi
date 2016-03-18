@@ -41,7 +41,7 @@ var TransactionForm = React.createClass({
             howMany: '',
             howMuch: ''
         }
-    }
+    },
     handlewhoChange: function(e){
         this.setState({who: e.target.value})
     },
@@ -58,20 +58,20 @@ var TransactionForm = React.createClass({
         var howMuch = this.state.howMuch.trim();
         if (!who && !howMany && !howMuch)
             return;
-        // TODO: send request to the server
+        this.props.onTransactionSubmit({who: who, howMany: howMany, howMuch: howMuch})
         this.setState({who: '', howMany: '', howMuch: ''});
-    }
+    },
     render: function() {
         return (
             <form className="transactionForm" onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="Who?"
-                    value={this.props.input.who}
+                    value={this.state.who}
                     onChange={this.handleWhoChange}/>
                 <input type="text" placeholder="How many?"
-                    value={this.props.input.howMany}
+                    value={this.state.howMany}
                     onChange={this.handleHowManyChange}/>
                 <input type="text" placeholder="How much?"
-                    value={this.props.input.howMuch}
+                    value={this.state.howMuch}
                     onChange={this.handleHowMuchChange}/>
                 <input type="submit" value="Add" />
             </form>
@@ -81,10 +81,21 @@ var TransactionForm = React.createClass({
 
 var TransactionBox = React.createClass({
     getInitialState: function(){
-        return { data: {DATA} }
+        return { data: [] }
     },
     handleTransactionSubmit: function(transaction) {
-        this.setState({})
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            type: 'POST',
+            data: transaction,
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        })
     },
     render: function(){
         return (
