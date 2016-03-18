@@ -11,7 +11,7 @@ ListCustomersBalances.prototype.execute = function(){
 
     var transactionsByName = _.groupBy(transactions, function(transaction){ return transaction.who; });
     _.each(transactionsByName, function(customerTransactions){
-        customerBalance = { who: '', howMany:0, howMuch:0 }
+        var customerBalance = { who: '', howMany:0, howMuch:0 }
         _.each(customerTransactions, function(transaction){
             customerBalance['createdAt'] = transaction.createdAt
             customerBalance['who'] = transaction.who
