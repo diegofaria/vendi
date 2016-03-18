@@ -49,23 +49,23 @@ var TransactionForm = React.createClass({
 
 var TransactionBox = React.createClass({
     render: function(){
-        var rows = [
-            {id: 1, name: 'John', howMany: 2, howMuch: 20},
-            {id: 2, name: 'John', howMany: 2, howMuch: 20},
-            {id: 3, name: 'John', howMany: 2, howMuch: 20},
-            {id: 4, name: 'John', howMany: 2, howMuch: 20}
-        ]
-
         return (
             <div>
                 <TransactionForm />
-                <TransactionTable rows={rows}/>
+                <TransactionTable rows={this.props.data}/>
             </div>
         )
     }
 })
 
+var DATA = [
+    {id: 1, name: 'John', howMany: 2, howMuch: 20},
+    {id: 2, name: 'John', howMany: 2, howMuch: 20},
+    {id: 3, name: 'John', howMany: 2, howMuch: 20},
+    {id: 4, name: 'John', howMany: 2, howMuch: 20}
+]
+
 ReactDOM.render(
-    <TransactionBox url="/api/transactions" />,
+    <TransactionBox url="/api/transactions" data={DATA}/>,
     document.getElementById('content')
 );
