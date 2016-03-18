@@ -42,7 +42,7 @@ var TransactionForm = React.createClass({
             howMuch: ''
         }
     },
-    handlewhoChange: function(e){
+    handleWhoChange: function(e){
         this.setState({who: e.target.value})
     },
     handleHowManyChange: function(e){
