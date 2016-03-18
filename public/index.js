@@ -2,7 +2,7 @@ var TransactionRow = React.createClass({
     render: function(){
         return (
             <tr>
-                <td>{this.props.transaction.name}</td>
+                <td>{this.props.transaction.who}</td>
                 <td>{this.props.transaction.howMany}</td>
                 <td>{this.props.transaction.howMuch}</td>
             </tr>
@@ -107,14 +107,7 @@ var TransactionBox = React.createClass({
     }
 })
 
-var DATA = [
-    {id: 1, name: 'John', howMany: 2, howMuch: 20},
-    {id: 2, name: 'John', howMany: 2, howMuch: 20},
-    {id: 3, name: 'John', howMany: 2, howMuch: 20},
-    {id: 4, name: 'John', howMany: 2, howMuch: 20}
-]
-
 ReactDOM.render(
-    <TransactionBox url="/api/transactions" data={DATA}/>,
+    <TransactionBox url="/api/transactions"/>,
     document.getElementById('content')
 );

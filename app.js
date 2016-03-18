@@ -23,6 +23,21 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.post('/api/transactions', function(req, res) {
+    var newTransaction = {
+        id: Date.now(),
+        who: req.body.who,
+        howMany: req.body.howMany,
+        howMuch: req.body.howMuch,
+    };
+    gateway.save(newTransaction)
+    res.json(gateway.findAll())
+});
+
+app.get('/api/transactions', function(req, res) {
+    res.json(gateway.findAll())
+});
+
 app.get('/api/balances', function(request, response) {
     new ListCustomersBalances(gateway, {
         list: function(balances){
@@ -31,7 +46,7 @@ app.get('/api/balances', function(request, response) {
     }).execute()
 })
 
-app.post('/api/who', function(request, response) {
+app.post('/api/transactions', function(request, response) {
     var transaction = {
         'who': request.body.who,
         'howMany': parseInt(request.body.howMany),
