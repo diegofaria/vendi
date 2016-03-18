@@ -25,7 +25,6 @@ app.use(function(req, res, next) {
 
 app.post('/api/transactions', function(req, res) {
     var newTransaction = {
-        id: Date.now(),
         who: req.body.who,
         howMany: parseInt(req.body.howMany),
         howMuch: parseInt(req.body.howMuch),
@@ -34,34 +33,15 @@ app.post('/api/transactions', function(req, res) {
         error: function(){response.send("explosion")},
         success: function(){res.json(gateway.findAll())}
     }).execute(newTransaction)
-
-
 });
 
 app.get('/api/transactions', function(req, res) {
-    res.json(gateway.findAll())
-});
-
-app.get('/api/balances', function(request, response) {
     new ListCustomersBalances(gateway, {
         list: function(balances){
-            response.render('index', {balances: balances})
+            res.json(balances)
         }
     }).execute()
-})
-
-app.post('/api/transactions', function(request, response) {
-    var transaction = {
-        'who': request.body.who,
-        'howMany': parseInt(request.body.howMany),
-        'howMuch': parseInt(request.body.howMuch),
-    }
-
-    new SaveTransaction(gateway, {
-        error: function(){response.send("deu pau")},
-        success: function(){response.redirect('/')}
-    }).execute(transaction)
-})
+});
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
