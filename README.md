@@ -3,12 +3,20 @@ Sales control for myself.
 
 # Running
 
-1.`npm install -g webpack`
+``sh
+npm install -g webpack
+``
 
-2.`npm install`
+``sh
+npm install
+`` 
 
-3.`webpack —progress`
+``sh
+webpack —progress
+``
 
-4.`node app.js`
+``sh
+node app.js
+``
 
-5.Access localhost:3000
+Access localhost:3000
