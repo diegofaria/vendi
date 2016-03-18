@@ -27,11 +27,15 @@ app.post('/api/transactions', function(req, res) {
     var newTransaction = {
         id: Date.now(),
         who: req.body.who,
-        howMany: req.body.howMany,
-        howMuch: req.body.howMuch,
+        howMany: parseInt(req.body.howMany),
+        howMuch: parseInt(req.body.howMuch),
     };
-    gateway.save(newTransaction)
-    res.json(gateway.findAll())
+    new SaveTransaction(gateway, {
+        error: function(){response.send("explosion")},
+        success: function(){res.json(gateway.findAll())}
+    }).execute(newTransaction)
+
+
 });
 
 app.get('/api/transactions', function(req, res) {
