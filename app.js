@@ -1,4 +1,5 @@
 var express = require('express')
+var morgan = require('morgan')
 var path = require('path')
 var bodyParser = require('body-parser')
 var app = express()
@@ -9,6 +10,7 @@ var TransactionGateway = require('./core/gateways/transaction_gateway')
 var gateway = new TransactionGateway()
 
 app.set('port', (process.env.PORT || 3000));
+app.use(morgan('common'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, 'public')));

@@ -23,6 +23,7 @@
     "jade": "1.11.0",
     "material-design-lite": "1.0.6",
     "mocha": "^2.4.5",
+    "morgan": "1.7.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "slackbots": "^0.5.1"
