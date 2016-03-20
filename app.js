@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 3000));
 app.use(morgan('dev'))
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-var transactions = require('./transactions')
+var transactions = require('./routes/transactions')
 app.use('/api/transactions', transactions)
 
 app.listen(app.get('port'), function() {
