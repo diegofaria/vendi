@@ -1,5 +1,5 @@
 var React = require('react');
-var TransactionRow = require('./transaction-row.js')
+var TransactionRow = require('./transaction-row')
 
 var TransactionTable = React.createClass({
     render: function(){

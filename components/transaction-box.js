@@ -1,7 +1,7 @@
 var React = require('react');
 
-var TransactionForm = require('./transaction-form.js')
-var TransactionTable = require('./transaction-table.js')
+var TransactionForm = require('./transaction-form')
+var TransactionTable = require('./transaction-table')
 
 var SaveTransaction = require('../core/usecases/save_transaction')
 var ListCustomersBalances = require('../core/usecases/list_customers_balances')
