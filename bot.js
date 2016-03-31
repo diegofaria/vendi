@@ -2,7 +2,7 @@ var SlackBot = require('slackbots');
 
 // create a bot
 var bot = new SlackBot({
-    token: 'TOKE_HERE',
+    token: 'TOKEN_HERE',
     name: 'Natalie Portman'
 });
 
