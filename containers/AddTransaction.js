@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addTransaction } from '../actions'
 
 let AddTransaction = ({ dispatch }) => {
-    let who, howMany, howMuch
+    let who, howMany, howMuch, createdAt
 
     return (
         <div>
@@ -11,7 +11,8 @@ let AddTransaction = ({ dispatch }) => {
                 e.preventDefault()
                 if (!who.value.trim() && !howMany.value.trim() && !howMuch.value.trim())
                     return
-                dispatch(addTransaction({ who, howMany, howMuch }))
+                createdAt = new Date()
+                dispatch(addTransaction({ createdAt, who, howMany, howMuch }))
                 who.value = howMany.value = howMuch.value = ''
             }}>
                 <input type="text" placeholder="Who?"
