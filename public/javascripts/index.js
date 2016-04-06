@@ -1,9 +1,15 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import transactionApp from '../../reducers/transactions'
+import App from '../../components/App'
 
-var TransactionBox = require('../../components/transaction-box')
+let store = createStore(transactionApp)
 
-ReactDOM.render(
-    <TransactionBox url="/api/transactions" pullInterval={2000}/>,
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('content')
 );
