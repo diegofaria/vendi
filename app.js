@@ -9,7 +9,7 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-  res.sendfile(path.join(__dirname, '/views/index.html'));
+  res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
 var transactions = require('./routes/transactions')
