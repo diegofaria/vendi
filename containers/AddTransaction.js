@@ -3,24 +3,27 @@ import { connect } from 'react-redux'
 import { addTransaction } from '../actions'
 
 let AddTransaction = ({ dispatch }) => {
-    let who, howMany, howMuch, createdAt
+    let whoInput, howManyInput, howMuchInput, createdAt
 
     return (
         <div>
             <form onSubmit={e => {
                 e.preventDefault()
-                if (!who.value.trim() && !howMany.value.trim() && !howMuch.value.trim())
+                let who = whoInput.value.trim()
+                let howMany = howManyInput.value.trim()
+                let howMuch = howMuchInput.value.trim()
+                if (!who && !howMany && !howMuch)
                     return
                 createdAt = new Date()
                 dispatch(addTransaction({ createdAt, who, howMany, howMuch }))
-                who.value = howMany.value = howMuch.value = ''
+                whoInput.value = howManyInput.value = howMuchInput.value = ''
             }}>
                 <input type="text" placeholder="Who?"
-                    ref={node => { who = node }}/>
+                    ref={node => { whoInput = node }}/>
                 <input type="text" placeholder="How many?"
-                    ref={node => { howMany = node }}/>
+                    ref={node => { howManyInput = node }}/>
                 <input type="text" placeholder="How much?"
-                    ref={node => { howMuch = node }}/>
+                    ref={node => { howMuchInput = node }}/>
                 <input type="submit" value="Add" />
             </form>
         </div>

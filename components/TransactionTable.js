@@ -21,7 +21,7 @@ const TransactionTable = ({transactions}) => (
 TransactionTable.propTypes = {
     transactions: PropTypes.arrayOf(
         PropTypes.shape({
-            createdAt: PropTypes.number.isRequired,
+            createdAt: PropTypes.instanceOf(Date),
             who: PropTypes.string.isRequired,
             howMany: PropTypes.string.isRequired,
             howMuch: PropTypes.string.isRequired

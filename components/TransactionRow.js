@@ -8,13 +8,12 @@ const TransactionRow = (transaction) => (
     </tr>
 )
 
-TransactionRow.propTypes = {
-    transaction: PropTypes.shape({
-        createdAt: PropTypes.number.isRequired,
-        who: PropTypes.string.isRequired,
-        howMany: PropTypes.string.isRequired,
-        howMuch: PropTypes.string.isRequired
-    }).isRequired
-}
+TransactionRow.propTypes = PropTypes.shape({
+    createdAt: PropTypes.number.isRequired,
+    who: PropTypes.string.isRequired,
+    howMany: PropTypes.string.isRequired,
+    howMuch: PropTypes.string.isRequired
+}).isRequired
+
 
 module.exports = TransactionRow

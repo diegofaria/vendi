@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
         transactions: state.transactions
     }
 }
-console.log(TransactionTable.propTypes)
+
 const TransactionTableContainer = connect(mapStateToProps)(TransactionTable)
 
 module.exports = TransactionTableContainer

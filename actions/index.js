@@ -4,7 +4,8 @@ export const addTransaction = function(transaction) {
         transaction: {
             who: transaction.who,
             howMany: transaction.howMany,
-            howMuch: transaction.howMuch
+            howMuch: transaction.howMuch,
+            createdAt: transaction.createdAt
         }
     }
 }

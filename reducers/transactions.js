@@ -13,8 +13,6 @@ const transaction = (state = [], action) => {
 const transactionApp = (state = {transactions: []}, action) => {
     switch(action.type) {
         case 'ADD_TRANSACTION':
-            console.log('state: ' + state.transactions)
-            console.log('action: ' + action)
             return {
                 transactions: transaction(state.transactions, action)
             }
